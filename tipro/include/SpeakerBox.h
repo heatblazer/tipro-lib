@@ -1,0 +1,182 @@
+/****************************************************************************/
+/*		SPEAKERBOX DEFINES                                                  */
+/****************************************************************************/
+
+// available devices
+#define SBX_DEVICE_HANDSFREE					0x00
+#define SBX_DEVICE_HANDSET						0x01
+#define SBX_DEVICE_HEADSET						0x02
+#define SBX_DEVICE_HANDSET_HEADSET				0x03
+#define SBX_DEVICE_HANDSFREE_HANDSET_HEADSET	0x04
+#define SBX_DEVICE_ILLEGAL						0xFF
+
+// microphone
+#define SBX_MIC_ACTIVE					0x00
+#define SBX_MIC_MUTE					0x01
+
+#define SBX_MIC_LEVEL_P7				0x00
+#define SBX_MIC_LEVEL_P6				0x01
+#define SBX_MIC_LEVEL_P5				0x02
+#define SBX_MIC_LEVEL_P4				0x03
+#define SBX_MIC_LEVEL_P3				0x04
+#define SBX_MIC_LEVEL_P2				0x05
+#define SBX_MIC_LEVEL_P1				0x06
+#define SBX_MIC_LEVEL_0					0x07
+#define SBX_MIC_LEVEL_M1				0x08
+#define SBX_MIC_LEVEL_M2				0x09
+#define SBX_MIC_LEVEL_M3				0x0A	
+#define SBX_MIC_LEVEL_M4				0x0B
+#define SBX_MIC_LEVEL_M5				0x0C
+#define SBX_MIC_LEVEL_M6				0x0D
+#define SBX_MIC_LEVEL_M7				0x0E
+#define SBX_MIC_LEVEL_ILLEGAL			0xFF
+
+#define SBX_MIC_LEVEL_LOW				SBX_MIC_LEVEL_M2
+#define SBX_MIC_LEVEL_MID				SBX_MIC_LEVEL_0
+#define SBX_MIC_LEVEL_HIGH				SBX_MIC_LEVEL_P2
+
+// paramters limited to usefull range
+#define SBX_MIC_LEVEL_MIN				SBX_MIC_LEVEL_P3
+#define SBX_MIC_LEVEL_MAX				SBX_MIC_LEVEL_M3
+
+// compression settings
+#define SBX_MIC_COMPRESSION_OFF					0x00
+#define SBX_MIC_COMPRESSION_LOW					0x01
+#define SBX_MIC_COMPRESSION_MID					0x02
+#define SBX_MIC_COMPRESSION_ILLEGAL				0xFF
+
+#define SBX_MIC_COMPRESSION_MIN				SBX_MIC_PROFILE_OFF
+#define SBX_MIC_COMPRESSION_MAX				SBX_MIC_PROFILE_MID
+
+// optimal distance
+#define SBX_MIC_DISTANCE_VERY_SHORT			0x00
+#define SBX_MIC_DISTANCE_SHORT				0x01
+#define SBX_MIC_DISTANCE_MEDIUM				0x02
+#define SBX_MIC_DISTANCE_LONG				0x03
+#define SBX_MIC_DISTANCE_ILLEGAL			0xFF
+
+#define SBX_MIC_DISTANCE_MIN				SBX_MIC_DISTANCE_VERY_SHORT
+#define SBX_MIC_DISTANCE_MAX				SBX_MIC_DISTANCE_LONG
+
+// noise threshold
+#define SBX_MIC_THRESHOLD_VERY_LOW		0x10
+#define SBX_MIC_THRESHOLD_LOW			0x11
+#define SBX_MIC_THRESHOLD_MID			0x12
+#define SBX_MIC_THRESHOLD_HIGH			0x13
+#define SBX_MIC_THRESHOLD_ILLEGAL		0xFF
+
+#define SBX_MIC_PROFILE_EX_MIN			SBX_MIC_THRESHOLD_VERY_LOW
+#define SBX_MIC_PROFILE_EX_MAX			SBX_MIC_THRESHOLD_HIGH
+
+// sidetone
+#define SBX_SIDETONE_LEVEL_M6DB			0x00
+#define SBX_SIDETONE_LEVEL_M9DB			0x01
+#define SBX_SIDETONE_LEVEL_M12DB		0x02
+#define SBX_SIDETONE_LEVEL_M15DB		0x03
+#define SBX_SIDETONE_LEVEL_M18DB		0x04
+#define SBX_SIDETONE_LEVEL_M21DB		0x05
+#define SBX_SIDETONE_LEVEL_M24DB		0x06
+#define SBX_SIDETONE_LEVEL_M27DB		0x07
+#define SBX_SIDETONE_LEVEL_M30DB		0x08
+#define SBX_SIDETONE_OFF				0xFE
+#define SBX_SIDETONE_ILLEGAL			0xFF
+
+#define SBX_SIDETONE_MIN				SBX_SIDETONE_LEVEL_M6DB
+#define SBX_SIDETONE_MAX				SBX_SIDETONE_LEVEL_M30DB
+
+// speakers
+#define SBX_SPK_ACTIVE					0x00
+#define SBX_SPK_MUTE					0x01
+
+#define SBX_SPK_LEVEL_MIN				0x00
+#define SBX_SPK_LEVEL_MAX				0x14
+#define SBX_SPK_LEVEL_ILLEGAL			0xFF
+
+#define SBX_ALERT_ACTIVE				0x00
+#define SBX_ALERT_MUTE					0x01
+
+#define SBX_HANDSET_HEADSET_LEVEL_9DB	0x00
+#define SBX_HANDSET_HEADSET_LEVEL_6DB	0x01
+#define SBX_HANDSET_HEADSET_LEVEL_3DB	0x02
+#define SBX_HANDSET_HEADSET_LEVEL_0DB	0x03
+#define SBX_HANDSET_HEADSET_LEVEL_M6DB	0x04
+#define SBX_HANDSET_HEADSET_LEVEL_M12DB	0x05
+#define SBX_HANDSET_HEADSET_LEVEL_M18DB	0x06
+#define SBX_HANDSET_HEADSET_LEVEL_M24DB	0x07
+#define SBX_HANDSET_HEADSET_LEVEL_M30DB	0x08
+#define SBX_HANDSET_HEADSET_LEVEL_M36DB	0x09
+#define SBX_HANDSET_HEADSET_LEVEL_M42DB	0x0A
+#define SBX_HANDSET_HEADSET_ILLEGAL		0xFF
+
+#define SBX_HANDSET_HEADSET_LEVEL_MIN	SBX_HANDSET_HEADSET_LEVEL_9DB
+#define SBX_HANDSET_HEADSET_LEVEL_MAX	SBX_HANDSET_HEADSET_LEVEL_M42DB
+
+#define SBX_ALERT_AS_ALERT				0x00
+#define SBX_ALERT_AS_VOICE				0x01
+#define SBX_ALERT_NOT_USED				0x02
+#define	SBX_ALERT_ILLEGAL				0xFF
+
+// indicators
+#define SBX_LED_OFF						0x00
+#define SBX_LED_ON						0x01
+// Task#98 - supported in >FW 5.xx.61
+#define SBX_LED_BLINK					0x02
+#define SBX_LED_BLINK_INV				0x03
+
+// keys
+#define SBX_KEY_SB_1					0x01
+#define SBX_KEY_SB_2					0x02
+#define SBX_KEY_SB_3					0x03
+#define SBX_KEY_SB_4					0x04
+#define SBX_KEY_SB_5					0x05
+#define SBX_KEY_SB_6					0x06
+#define SBX_HANDSET_PTT					0x07
+#define SBX_HEADSET_PTT					0x08
+#define SBX_HANDSET_HOOK				0x09
+#define SBX_HEADSET_CONNECTED			0x0A
+
+//state of the keys
+#define SBX_KEY_PRESSED					0x80
+#define SBX_KEY_RELEASED				0x00
+
+#define SBX_KEY_ILLEGAL					0xFF
+
+#define HANDSET_ONHOOK					0x80
+#define HANDSET_OFFHOOK					0x00
+
+#define HEADSET_CONNECTED				0x80
+#define HEADSET_DISCONNECTED			0x00
+
+
+#define HANDSET_KEY_PRESSED				0x80
+#define HANDSET_KEY_RELEASED			0x00
+
+// LED luminance
+#define SBX_LED_LUMINANCE_MIN			0x00
+#define SBX_LED_LUMINANCE_MAX			0x0A
+
+// PTT LED controll
+#define PTT_LED_OFF						0x00
+#define PTT_LED_ON						0x10
+#define PTT_LED_BLINK					0x20
+
+// RGB PTT LED controll (currently not available in HW)
+#define PTT_LED_OFF						0x00
+#define PTT_LED_R_ON					0x01
+#define PTT_LED_R_BLINK					0x02
+#define PTT_LED_G_ON					0x04
+#define PTT_LED_G_BLINK					0x0C
+#define PTT_LED_B_ON					0x10
+#define PTT_LED_B_BLINK					0x20
+
+// Auto Luminance (BF10 and SBX)
+#define AUTO_LUMINANCE_MODE_1			0xE0
+#define AUTO_LUMINANCE_MODE_2			0xE1
+#define AUTO_LUMINANCE_MODE_3			0xE2
+#define AUTO_LUMINANCE_OFF				0x00	// manual mode
+
+// Analog audio
+#define SBX_ANALOG_AUDIO_OFF			0x00
+#define SBX_ANALOG_AUDIO_LEFT			0x01
+#define SBX_ANALOG_AUDIO_RIGHT			0x02
+#define SBX_ANALOG_AUDIO_BOTH			0x03
