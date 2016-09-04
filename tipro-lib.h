@@ -34,6 +34,9 @@ private:
     HIDSetLeds _setLeds;
     HIDDetectDevices _detectDevices;
     HIDEnumerateModules _enumModules;
+    HIDGetControllerInfo _getControllerInfo;
+    HIDGetModuleVersion _getModuleVer;
+
 
 
 private:

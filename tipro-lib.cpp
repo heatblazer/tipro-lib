@@ -117,6 +117,18 @@ bool TiproLib::_loadAll()
         allIsOk &= false;
     }
 
+    s_selfRef->_getControllerInfo = (HIDGetControllerInfo)
+            s_inst->resolve("HIDGetControllerInfo");
+    if(!s_selfRef->_getControllerInfo) {
+        allIsOk &= false;
+    }
+
+    s_selfRef->_getModuleVer = (HIDGetModuleVersion)
+            s_inst->resolve("HIDGetModuleVersion");
+    if(!s_selfRef->_getModuleVer) {
+        allIsOk &= false;
+    }
+
     return allIsOk;
 }
 
