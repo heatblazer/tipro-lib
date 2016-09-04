@@ -8,6 +8,7 @@
 #include <QPushButton>
 #include <QSlider>
 #include <QLabel>
+#include <QTimer>
 
 // tipro lib //
 #include "tipro-lib.h"
@@ -26,6 +27,8 @@ private slots:
     int led2();
     int led3();
     int led4();
+    void toggleLedTest();
+    void testAllLeds();
     int setBrightness(int level);
     void turnOffScreen();
     void turnOnScreen();
@@ -37,7 +40,10 @@ private:
         QPushButton led2;
         QPushButton led3;
         QPushButton led4;
+        QPushButton testAllLeds;
         QHBoxLayout layout;
+        QTimer timer;
+        bool toggle;
     } m_leds;
 
     struct {
