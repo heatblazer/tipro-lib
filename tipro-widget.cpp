@@ -5,7 +5,23 @@ namespace tipro {
 TiproWidget::TiproWidget(QWidget *parent)
     : QWidget(parent)
 {
+
+// TODO: later add support for left and right module
+    if(0){
+        m_leftModule.widget = new QWidget();
+        m_rightModule.widget = new QWidget();
+
+        m_leftModule.widget->setMinimumSize(200, 200);
+        m_leftModule.widget->setMaximumSize(200, 200);
+        m_rightModule.widget->setMinimumSize(200, 200);
+        m_rightModule.widget->setMaximumSize(200, 200);
+
+        m_leftModule.widget->show();
+        m_rightModule.widget->show();
+
+    }
     {
+        m_leds.label.setText("Test leds:");
         m_leds.led1.setText("LED 1");
         m_leds.led2.setText("LED 2");
         m_leds.led3.setText("LED 3");
@@ -13,6 +29,7 @@ TiproWidget::TiproWidget(QWidget *parent)
         m_leds.testAllLeds.setText("Test all leds");
 
 
+        m_leds.layout.addWidget(&m_leds.label);
         m_leds.layout.addWidget(&m_leds.led1);
         m_leds.layout.addWidget(&m_leds.led2);
         m_leds.layout.addWidget(&m_leds.led3);
@@ -23,19 +40,36 @@ TiproWidget::TiproWidget(QWidget *parent)
     }
 
     {
+        m_screen.label.setText("Resistive screen:");
         m_screen.screen_off.setText("Screen OFF");
         m_screen.screen_on.setText("Screen ON");
+        m_screen.layout.addWidget(&m_screen.label);
         m_screen.layout.addWidget(&m_screen.screen_on);
         m_screen.layout.addWidget(&m_screen.screen_off);
     }
 
     {
-        m_brightness.text.setText("BRIGHTNESS");
+        m_brightness.text.setText("BRIGHTNESS:");
         m_brightness.slider = new QSlider(Qt::Horizontal);
         // as in for tipro lib - level is between 0 and 20
         m_brightness.slider->setRange(0, 20);
         m_brightness.layout.addWidget(&m_brightness.text);
         m_brightness.layout.addWidget(m_brightness.slider);
+    }
+
+    {
+        m_info.label.setText("Info tab:");
+        m_info.text.setMinimumSize(400,50);
+        m_info.text.setMaximumSize(400,50);
+        m_info.text.setReadOnly(true);
+        QPalette p = palette();
+        p.setColor(QPalette::Base, Qt::black);
+        p.setColor(QPalette::Text, Qt::green);
+        m_info.text.setPalette(p);
+
+        m_info.layout.addWidget(&m_info.label);
+        m_info.layout.addWidget(&m_info.text);
+
     }
 
     {
@@ -64,6 +98,8 @@ TiproWidget::TiproWidget(QWidget *parent)
                 this, SLOT(turnOnScreen()));
     }
 
+    m_layout.addLayout(&m_info.layout);
+
     m_layout.addLayout(&m_leds.layout);
     m_layout.addLayout(&m_brightness.layout);
     m_layout.addLayout(&m_screen.layout);
@@ -78,6 +114,12 @@ TiproWidget::TiproWidget(QWidget *parent)
 TiproWidget::~TiproWidget()
 {
 
+}
+
+void TiproWidget::closeEvent(QCloseEvent *event)
+{
+
+    cleanup();
 }
 
 int TiproWidget::led1()
@@ -133,6 +175,26 @@ void TiproWidget::turnOffScreen()
 void TiproWidget::turnOnScreen()
 {
     TiproLib::Instance().enableTouchScreen();
+}
+
+void TiproWidget::hTextChange()
+{
+    QTextCursor c(m_info.text.textCursor());
+    c.movePosition(QTextCursor::End, QTextCursor::MoveAnchor);
+    m_info.text.setTextCursor(c);
+}
+
+void TiproWidget::cleanup()
+{
+    if (0) {
+    if(m_leftModule.widget) {
+        delete m_leftModule.widget;
+    }
+    if (m_rightModule.widget) {
+        delete m_rightModule.widget;
+    }
+    }
+
 }
 
 } // namespace tipro

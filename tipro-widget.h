@@ -9,6 +9,7 @@
 #include <QSlider>
 #include <QLabel>
 #include <QTimer>
+#include <QPlainTextEdit>
 
 // tipro lib //
 #include "tipro-lib.h"
@@ -21,7 +22,8 @@ class TiproWidget : public QWidget
 public:
     explicit TiproWidget(QWidget* parent=nullptr);
     virtual ~TiproWidget();
-
+protected:
+    void closeEvent(QCloseEvent *event);
 private slots:
     int led1();
     int led2();
@@ -32,10 +34,13 @@ private slots:
     int setBrightness(int level);
     void turnOffScreen();
     void turnOnScreen();
+    void hTextChange();
+    void cleanup();
 
 private:
     QVBoxLayout m_layout;
     struct {
+        QLabel label;
         QPushButton led1;
         QPushButton led2;
         QPushButton led3;
@@ -47,6 +52,7 @@ private:
     } m_leds;
 
     struct {
+        QLabel label;
         QPushButton screen_off;
         QPushButton screen_on;
         QHBoxLayout layout;
@@ -59,6 +65,27 @@ private:
         QHBoxLayout layout;
     } m_brightness;
 
+    struct {
+        // info bar
+        QPlainTextEdit text;
+        QLabel          label;
+        QHBoxLayout layout;
+
+    } m_info;
+
+    struct {
+        QWidget* widget;
+        QVBoxLayout layout;
+        // future modules
+    } m_leftModule;
+
+    struct {
+        QWidget* widget;
+        QVBoxLayout layout;
+        // future modules
+    } m_rightModule;
+
+    QObject m_resources;
 
 };
 

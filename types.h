@@ -14,6 +14,9 @@ typedef int (*HIDTouchscreenEnable)(void);
 typedef int (*HIDSetLeds)(int nLEDs);
 typedef int (*HIDDetectDevices)(void);
 typedef int (*HIDEnumerateModules)(void);
+typedef int (*HIDGetControllerInfo)(int *nVerMaj, int *nVerMin, int *nVerBuild,int *nVerCustom, int *nFWLevel);
+typedef int (*HIDGetModuleVersion)(int nIndex, unsigned char *nVerMaj, unsigned char *nVerMin, unsigned char *nVerBuild);
+
 #if 0
 /****************************************************************************/
 /*		SPEAKERBOX FUNCTIONS                                                */
