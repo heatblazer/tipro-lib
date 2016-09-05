@@ -44,3 +44,5 @@ HEADERS += \
     tipro-widget.h \
     tipro-lib.h \
     types.h
+
+INSTALLS += $$PWD/release
