@@ -59,8 +59,8 @@ TiproWidget::TiproWidget(QWidget *parent)
 
     {
         m_info.label.setText("Info tab:");
-        m_info.text.setMinimumSize(400,50);
-        m_info.text.setMaximumSize(400,50);
+        m_info.text.setMinimumSize(400,150);
+        m_info.text.setMaximumSize(400,150);
         m_info.text.setReadOnly(true);
         QPalette p = palette();
         p.setColor(QPalette::Base, Qt::black);
@@ -109,6 +109,11 @@ TiproWidget::TiproWidget(QWidget *parent)
     setMaximumSize(480, 480);
 
     m_leds.timer.start();
+    // before we show the widget, set the info
+    {
+        static QTimer onetimer;
+        onetimer.singleShot(1000, this, showInfo);
+    }
 }
 
 TiproWidget::~TiproWidget()
@@ -194,6 +199,26 @@ void TiproWidget::cleanup()
         delete m_rightModule.widget;
     }
     }
+
+}
+
+void TiproWidget::showInfo()
+{
+    int devices = TiproLib::Instance().detectDevices();
+    int enumModules = TiproLib::Instance().enumDevices();
+
+    struct controller_info ci = TiproLib::Instance().getControllerInfo();
+
+    static char txt[512] = {0};
+    sprintf(txt, "Devices: [%d]\n"
+            "Enumerated modules: [%d]\n"
+            "Controller info:\n VerMaj:[%d]\nVerMin:[%d]\n"
+            "VerBuild:[%d]\nVerCustom:[%d]\n"
+            "FWLevel:[%d]\n",
+            ci.verMaj, ci.verMin, ci.verBuild,
+            ci.verCustom, ci.FWLevel);
+
+    m_info.text.setPlainText(QString(txt));
 
 }
 

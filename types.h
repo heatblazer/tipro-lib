@@ -6,7 +6,14 @@
 #define TIPRO_LED3 (1 << 2)
 #define TIPRO_LED4 (1 << 3)
 
-
+struct controller_info
+{
+    int verMaj;
+    int verMin;
+    int verBuild;
+    int verCustom;
+    int FWLevel;
+};
 
 typedef int (*HIDTouchscreenDisable)(void);
 typedef int (*HIDSetLuminance)(int nLum);

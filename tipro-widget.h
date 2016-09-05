@@ -36,6 +36,7 @@ private slots:
     void turnOnScreen();
     void hTextChange();
     void cleanup();
+    void showInfo();
 
 private:
     QVBoxLayout m_layout;

@@ -22,6 +22,7 @@ public:
     int setBrightness(int level);
     int enumDevices(void);
     int detectDevices(void);
+    struct controller_info getControllerInfo();
 
 
 private:

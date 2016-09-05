@@ -79,6 +79,19 @@ int TiproLib::detectDevices()
     }
 }
 
+controller_info TiproLib::getControllerInfo()
+{
+    controller_info ci = {0, 0, 0, 0, 0};
+    if(_getControllerInfo) {
+        _getControllerInfo(&ci.verMaj, &ci.verMin,
+                           &ci.verBuild, &ci.verBuild,
+                           &ci.FWLevel);
+    }
+    return ci;
+}
+
+
+
 bool TiproLib::_loadAll()
 {
     bool allIsOk = true;
