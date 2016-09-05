@@ -124,7 +124,7 @@ TiproWidget::~TiproWidget()
 
 void TiproWidget::closeEvent(QCloseEvent *event)
 {
-
+    (void) event;
     cleanup();
 }
 
@@ -216,6 +216,7 @@ void TiproWidget::showInfo()
             "Controller info:\n VerMaj:[%d]\nVerMin:[%d]\n"
             "VerBuild:[%d]\nVerCustom:[%d]\n"
             "FWLevel:[%d]\n",
+            devices, enumModules,
             ci.verMaj, ci.verMin, ci.verBuild,
             ci.verCustom, ci.FWLevel);
 
