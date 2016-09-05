@@ -53,6 +53,7 @@ TiproWidget::TiproWidget(QWidget *parent)
     {
         m_brightness.text.setText("BRIGHTNESS:");
         m_brightness.slider = new QSlider(Qt::Horizontal);
+        m_brightness.slider->setValue(10);
         // as in for tipro lib - level is between 0 and 20
         m_brightness.slider->setRange(0, 20);
         m_brightness.layout.addWidget(&m_brightness.text);
@@ -87,8 +88,8 @@ TiproWidget::TiproWidget(QWidget *parent)
                 this, SLOT(toggleLedTest()));
         connect(&m_leds.timer, SIGNAL(timeout()),
                 this, SLOT(testAllLeds()));
-        connect(&m_leds.timer, SIGNAL(timeout()),
-                this, SLOT(showInfo()));
+       // connect(&m_leds.timer, SIGNAL(timeout()),
+       //         this, SLOT(showInfo()));
     }
 
     {
@@ -113,6 +114,7 @@ TiproWidget::TiproWidget(QWidget *parent)
     setMaximumSize(480, 480);
 
     m_leds.timer.start();
+    showInfo();
 }
 
 TiproWidget::~TiproWidget()
