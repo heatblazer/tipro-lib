@@ -1,5 +1,7 @@
 #include "tipro-widget.h"
 #include <iostream>
+#include <QTimer>
+
 namespace tipro {
 
 TiproWidget::TiproWidget(QWidget *parent)
@@ -85,6 +87,8 @@ TiproWidget::TiproWidget(QWidget *parent)
                 this, SLOT(toggleLedTest()));
         connect(&m_leds.timer, SIGNAL(timeout()),
                 this, SLOT(testAllLeds()));
+        connect(&m_leds.timer, SIGNAL(timeout()),
+                this, SLOT(showInfo()));
     }
 
     {
@@ -109,11 +113,6 @@ TiproWidget::TiproWidget(QWidget *parent)
     setMaximumSize(480, 480);
 
     m_leds.timer.start();
-    // before we show the widget, set the info
-    {
-        static QTimer onetimer;
-        onetimer.singleShot(1000, this, showInfo);
-    }
 }
 
 TiproWidget::~TiproWidget()
